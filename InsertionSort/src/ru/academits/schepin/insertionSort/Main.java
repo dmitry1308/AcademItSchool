@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 import static ru.academits.schepin.insertionSort.Sort.sort;
 
 public class Main {
