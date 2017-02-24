@@ -11,7 +11,7 @@ public class Main {
         Square square1 = new Square(2);
         Square square2 = new Square(4);
 
-        Rectangle rectangle1 = new Rectangle(5, 20);
+        Rectangle rectangle1 = new Rectangle(5, 21);
         Rectangle rectangle2 = new Rectangle(5, 200);
 
         Triangle triangle1 = new Triangle(5, 3, 2, 8, 50, 3);

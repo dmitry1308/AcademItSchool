@@ -48,12 +48,12 @@ public class Main {
             allRanges[i].print();
             System.out.print(" = ");
 
-            Range [] result =  allRanges[i].union(r1);
+            Range[] result = allRanges[i].union(r1);
             if (result == null) {
 
                 System.out.print("Пересечения нет");
             } else {
-                for (int j=0; j<result.length;++j){
+                for (int j = 0; j < result.length; ++j) {
                     result[j].print();
                     System.out.print("  ");
                 }
@@ -73,12 +73,12 @@ public class Main {
             allRanges[i].print();
             System.out.print(" = ");
 
-            Range [] result =  allRanges[i].subtract(r1);
+            Range[] result = allRanges[i].subtract(r1);
             if (result == null) {
 
                 System.out.print("Пересечения нет");
             } else {
-                for (int j=0; j<result.length;++j){
+                for (int j = 0; j < result.length; ++j) {
                     result[j].print();
                     System.out.print("  ");
                 }
