@@ -35,33 +35,11 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-
         return "Прямоугольник со сторонами: " + width + " x " + height;
     }
 
     @Override
-    public boolean equals(Object o) {
-
-        if (o instanceof Rectangle) {
-
-            Rectangle c = (Rectangle) o;
-
-            if (this.width == c.width && this.height == c.height) {
-
-                return true;
-            } else {
-
-                return false;
-            }
-        } else {
-
-            return false;
-        }
-    }
-
-    @Override
     public int hashCode() {
-
         return 31 * (int) width + 117 * (int) height;
     }
 }
