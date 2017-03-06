@@ -12,14 +12,17 @@ public class Circle implements Shape {
     public double getWidth() {
         return radius * 2;
     }
+
     @Override
     public double getHeight() {
         return radius * 2;
     }
+
     @Override
     public double getArea() {
         return Math.PI * Math.pow(radius, 2);
     }
+
     @Override
     public double getPerimeter() {
         return 2 * Math.PI * radius;
@@ -34,4 +37,16 @@ public class Circle implements Shape {
     public int hashCode() {
         return 31 * (int) radius;
     }
+
+    @Override
+    public boolean equals(Shape o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Circle c = (Circle) o;
+        return radius == c.radius;
+    }
+
 }
+
+
+

@@ -102,30 +102,31 @@ public class Range {
     }
 
     public Range[] subtract(Range r1) {
-        // r1 inside this
-        if (r1.from > this.from && r1.to < this.to) {
-            return null;
-        }
-
         if (isNotIntersection(r1)) {
             Range a = new Range(r1.from, r1.to);
             return new Range[]{a};
         }
 
+        // r1 inside this
+        if (r1.from > this.from && r1.to < this.to) {
+            Range a1 = new Range(this.from, r1.from);
+            Range a2 = new Range(r1.to, this.to);
+            return new Range[]{a1, a2};
+        }
+
         // this inside r1
         if (this.from > r1.from && this.to < r1.to) {
-            Range a1 = new Range(r1.from, this.from);
-            Range a2 = new Range(this.to, r1.to);
-            return new Range[]{a1, a2};
+            Range a = new Range(0, 0);
+            return new Range[]{a};
         }
 
         // [r1.from    [this.from    r1.to]    this.to]
         if (this.from < r1.to && this.from > r1.from) {
-            Range a = new Range(r1.from, this.from);
+            Range a = new Range(r1.to, this.to);
             return new Range[]{a};
 
         } else {
-            Range a = new Range(this.to, r1.to);
+            Range a = new Range(this.from, r1.from);
             return new Range[]{a};
         }
     }
@@ -134,8 +135,6 @@ public class Range {
         System.out.format("[%.2f;%.2f]", from, to);
     }
 }
-
-
 
 
 

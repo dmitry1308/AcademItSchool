@@ -28,6 +28,14 @@ public class Square implements Shape {
     }
 
     @Override
+    public boolean equals(Shape o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Square s = (Square) o;
+        return side == s.side;
+    }
+
+    @Override
     public String toString() {
         return "Квадрат со стороной = " + side;
     }

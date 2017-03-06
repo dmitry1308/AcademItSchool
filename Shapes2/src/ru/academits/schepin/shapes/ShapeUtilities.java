@@ -1,5 +1,8 @@
 package ru.academits.schepin.shapes;
 
+import java.util.Arrays;
+
+
 public class ShapeUtilities {
     public static Shape findMaximumArea(Shape[] allShapes) {
         Shape bestShape = allShapes[0];
@@ -13,26 +16,19 @@ public class ShapeUtilities {
 
 
     public static Shape findSecondMaximumPerimeter(Shape[] allShapes) {
-        Shape[] newShapes = new Shape[allShapes.length];
-
-        for (int i = 0; i < allShapes.length; i++) {
-            newShapes[i] = allShapes[i];
-        }
-
-        for (int i = 0; i < newShapes.length - 1; i++) {
-            int iom = i;
-            for (int j = i + 1; j < newShapes.length; j++) {
-                if (newShapes[j].getPerimeter() > newShapes[iom].getPerimeter()) {
-                    iom = j;
-                }
-            }
-
-            if (iom != i) {
-                Shape temp = newShapes[i];
-                newShapes[i] = newShapes[iom];
-                newShapes[iom] = temp;
-            }
-        }
-        return newShapes[1];
+        Arrays.sort(allShapes, new PerimeterComparator());
+        return allShapes[1];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

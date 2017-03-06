@@ -111,6 +111,14 @@ public class Triangle implements Shape {
     }
 
     @Override
+    public boolean equals(Shape o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Triangle t = (Triangle) o;
+        return x1 == t.x1 && x2 == t.x2 && x3 == t.x3 && y1 == t.y1 && y2 == t.y2 && y3 == t.y3;
+    }
+
+    @Override
     public String toString() {
         double a = findLengthOfSegment(x2, x1, y2, y1);
         double b = findLengthOfSegment(x3, x2, y3, y2);

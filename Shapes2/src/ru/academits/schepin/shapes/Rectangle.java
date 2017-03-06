@@ -34,6 +34,14 @@ public class Rectangle implements Shape {
     }
 
     @Override
+    public boolean equals(Shape o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Rectangle r = (Rectangle) o;
+        return width == r.width && height == r.height;
+    }
+
+    @Override
     public String toString() {
         return "Прямоугольник со сторонами: " + width + " x " + height;
     }
