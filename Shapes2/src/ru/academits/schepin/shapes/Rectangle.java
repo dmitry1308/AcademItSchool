@@ -33,10 +33,14 @@ public class Rectangle implements Shape {
         return 2 * (width + height);
     }
 
-    @Override
-    public boolean equals(Shape o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()){
+            return false;
+        }
         Rectangle r = (Rectangle) o;
         return width == r.width && height == r.height;
     }

@@ -38,10 +38,13 @@ public class Circle implements Shape {
         return 31 * (int) radius;
     }
 
-    @Override
-    public boolean equals(Shape o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Circle c = (Circle) o;
         return radius == c.radius;
     }

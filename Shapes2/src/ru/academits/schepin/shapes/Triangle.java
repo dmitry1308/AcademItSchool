@@ -89,7 +89,7 @@ public class Triangle implements Shape {
         return yU - yD;
     }
 
-    public static double findLengthOfSegment(double xEnd, double xStart, double yEnd, double yStart) {
+    private static double findLengthOfSegment(double xEnd, double xStart, double yEnd, double yStart) {
         return Math.sqrt(Math.pow((xEnd - xStart), 2) + Math.pow((yEnd - yStart), 2));
     }
 
@@ -110,10 +110,14 @@ public class Triangle implements Shape {
         return a + b + c;
     }
 
-    @Override
-    public boolean equals(Shape o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()){
+            return false;
+        }
         Triangle t = (Triangle) o;
         return x1 == t.x1 && x2 == t.x2 && x3 == t.x3 && y1 == t.y1 && y2 == t.y2 && y3 == t.y3;
     }

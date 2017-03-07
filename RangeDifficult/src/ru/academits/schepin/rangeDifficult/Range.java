@@ -103,7 +103,7 @@ public class Range {
 
     public Range[] subtract(Range r1) {
         if (isNotIntersection(r1)) {
-            Range a = new Range(r1.from, r1.to);
+            Range a = new Range(this.from, this.to);
             return new Range[]{a};
         }
 
@@ -116,8 +116,7 @@ public class Range {
 
         // this inside r1
         if (this.from > r1.from && this.to < r1.to) {
-            Range a = new Range(0, 0);
-            return new Range[]{a};
+            return new Range[0];
         }
 
         // [r1.from    [this.from    r1.to]    this.to]
