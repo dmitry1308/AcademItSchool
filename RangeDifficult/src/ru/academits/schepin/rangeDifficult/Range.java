@@ -114,16 +114,23 @@ public class Range {
             return new Range[]{a1, a2};
         }
 
-        // this inside r1
-        if (this.from > r1.from && this.to < r1.to) {
+        // this inside r1 или [r1.from=this.from   this.to] r1.to] или
+        // [r1.from [this.from   this.to= r1.to] или [r1.from=this.from   this.to= r1.to]
+        if (this.from >= r1.from && this.to <= r1.to) {
             return new Range[0];
         }
 
+        //[r1.from=this.from        this.to] r1.to]
+        if (r1.from == this.from && r1.to > this.to) {
+            Range a = new Range(r1.from, this.to);
+            return new Range[]{a};
+        }
+
+
         // [r1.from    [this.from    r1.to]    this.to]
-        if (this.from < r1.to && this.from > r1.from) {
+        if (this.from <= r1.to && this.from >= r1.from) {
             Range a = new Range(r1.to, this.to);
             return new Range[]{a};
-
         } else {
             Range a = new Range(this.from, r1.from);
             return new Range[]{a};
