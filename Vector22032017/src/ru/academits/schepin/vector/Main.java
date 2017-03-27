@@ -3,14 +3,17 @@ package ru.academits.schepin.vector;
 
 public class Main {
     public static void main(String[] args) {
+
         //Сумма:
         double[] array1 = {1, 6, 3, 9, 7, 2};
-        double[] array2 = {6, 8, 9, 8};
+        double[] array2 = {1, 6, 3, 9, 7, 2, 5, 9};
 
-        Vector a = new Vector(6, array1);
+
+        Vector a = new Vector(array1);
         Vector b = new Vector(array2);
         System.out.println("a = " + a);
         System.out.println("b = " + b);
+
 
         //Создать копию вектора:
         Vector copyOfA = new Vector(a);
@@ -27,14 +30,12 @@ public class Main {
 
 
         System.out.println("Вычитание вектора:");
-        double[] array3 = {3, 4, 5};
-        Vector d = new Vector(10, array3);
-        Vector e = Vector.sub(d, c);
-        System.out.println("d = " + d);
-        System.out.println("d - c = " + e);
+
+        Vector e = Vector.sub(a, b);
+        System.out.println("a - b = " + e);
 
 
-        System.out.println("Умножение векторар на скаляр:");
+        System.out.println("Умножение вектора на скаляр:");
         double[] array4 = {4, 8, 7, 9, 6, 1};
         Vector m = new Vector(array4);
         System.out.println("m = " + m);
@@ -42,7 +43,7 @@ public class Main {
 
 
         System.out.println("Разворот вектора:");
-        System.out.println("-c = " + c.invert(-1));
+        System.out.println("-c = " + c.invert());
 
         System.out.println("Получение длины вектора:");
         System.out.println("|a| = " + a.norma());
@@ -56,18 +57,16 @@ public class Main {
 
 
         System.out.println("Скалярное произведение векторов:");
-        double scalarP = Vector.scalarMultiply(c, d);
+        double scalarP = Vector.scalarMultiply(c, a);
         System.out.println("c*d = " + scalarP);
 
 
-        System.out.println("Сравнение векторов с и f:");
-        double arr5[] = {7, 14, 1, 17, 7, 2};
-        Vector f = new Vector(arr5);
-        System.out.println(c + " и " + f);
-        if (c.equals(f)) {
-            System.out.println("c равен f");
+        System.out.println("Сравнение векторов a и b:");
+        System.out.println(a + " и " + b);
+        if (a.equals(b)) {
+            System.out.println("a равен b");
         } else {
-            System.out.println("c не равен f");
+            System.out.println("a не равен b");
         }
 
         System.out.println("Хэш коды: ");

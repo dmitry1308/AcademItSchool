@@ -6,15 +6,8 @@ import java.util.Arrays;
 public class Vector {
     private double[] vector;
 
-    //Создание конструктора, где размерность вектора равна n :
-    public Vector(int n) {
-        setVector(new double[n]);
-    }
-
-    //Создание копии вектора, где передается только массив:
-    public Vector(double[] v) {
-        setVector(new double[v.length]);
-        System.arraycopy(v, 0, getVector(), 0, v.length);
+    public Vector(double[] vector) {
+        this.vector = vector;
     }
 
     public double[] getVector() {
@@ -25,74 +18,83 @@ public class Vector {
         this.vector = vector;
     }
 
-
-    //Создание копии вектора, где передается размерность n и  массив:
-    public Vector(int sizeOfVector, double[] v) {
-        setVector(new double[sizeOfVector]);
-
-        if (sizeOfVector <= v.length) {
-            System.arraycopy(v, 0, getVector(), 0, sizeOfVector);
-        } else {
-            System.arraycopy(v, 0, getVector(), 0, v.length);
-            for (int i = v.length; i < sizeOfVector; i++) {
-                getVector()[i] = 0;
-            }
+    //Создание конструктора, где размерность вектора равна n :
+    public Vector(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Неправильная размерность вектора");
         }
+        vector = (new double[n]);
     }
 
     // Создание  копии вектора:
     public Vector(Vector v) {
-        this(v.getVector());
+        this(v.vector);
     }
+
+
+    //Создание копии вектора, где передается размерность n и  массив:
+    public Vector(int sizeOfVector, double[] v) {
+        if (sizeOfVector <= 0) {
+            throw new IllegalArgumentException("Неправильная размерность вектора");
+        }
+
+        vector = new double[sizeOfVector];
+        if (sizeOfVector < v.length) {
+            System.arraycopy(v, 0, vector, 0, sizeOfVector);
+        } else {
+            System.arraycopy(v, 0, vector, 0, v.length);
+        }
+    }
+
 
     // Получение размерности вектора:
     public int getSize() {
-        return getVector().length;
+        return vector.length;
     }
 
 
     @Override
     public String toString() {
-        return Arrays.toString(getVector());
+        return Arrays.toString(vector);
     }
 
     //todo Операции с векторами:
 
     //Метод для сложения векторов:
     public void sum(Vector b) {
-        if (b.getVector().length >= getVector().length) {
-            for (int i = 0; i < getVector().length; i++) {
-                getVector()[i] += b.getVector()[i];
-            }
-        } else {
-            for (int i = 0; i < b.getVector().length; i++) {
-                getVector()[i] += b.getVector()[i];
-            }
+        for (int i = 0; i < b.getSize(); i++) {
+            vector[i] += b.vector[i];
         }
     }
+
 
     //Сложение векторов:
     public static Vector sum(Vector a, Vector b) {
-        Vector copyOfA = new Vector(a);  //Копия вектора а
-        copyOfA.sum(b);
+        int n = Math.max(a.getSize(), b.getSize());
 
-        return copyOfA;
+        double[] array = new double[n];
+        System.arraycopy(a.getVector(), 0, array, 0, a.getSize());
+        Vector result = new Vector(array);
+
+        result.sum(b);
+
+        return result;
     }
 
+
     //Метод для вычитания векторов:
-    public void sub(Vector v) {
-
-        int n = Math.min(v.getVector().length, getVector().length);
-
-        for (int i = 0; i < n; i++) {
-            getVector()[i] -= v.getVector()[i];
+    public void sub(Vector b) {
+        for (int i = 0; i < b.getSize(); i++) {
+            vector[i] -= b.vector[i];
         }
     }
 
-
     // Вычитание векторов:
     public static Vector sub(Vector a, Vector b) {
-        Vector result = new Vector(a);
+        int n = Math.max(a.getSize(), b.getSize());
+        double[] array = new double[n];
+        System.arraycopy(a.getVector(), 0, array, 0, a.getSize());
+        Vector result = new Vector(array);
         result.sub(b);
         return result;
     }
@@ -100,17 +102,17 @@ public class Vector {
     // Умножение на скаляр:
     public Vector scale(double k) {
         Vector result = new Vector(this);
-        for (int i = 0; i < result.getVector().length; i++) {
-            result.getVector()[i] *= k;
+        for (int i = 0; i < result.vector.length; i++) {
+            result.vector[i] *= k;
         }
         return result;
     }
 
     //Разворот вектора:
-    public Vector invert(int k) {
+    public Vector invert() {
         Vector result = new Vector(this);
-        for (int i = 0; i < result.getVector().length; i++) {
-            result.getVector()[i] *= k;
+        for (int i = 0; i < result.vector.length; i++) {
+            result.vector[i] *= -1;
         }
         return result;
     }
@@ -118,8 +120,8 @@ public class Vector {
     // Получение длины вектора:
     public double norma() {
         double sum = 0;
-        for (int i = 0; i < getVector().length; i++) {
-            sum += getVector()[i] * getVector()[i];
+        for (int i = 0; i < vector.length; i++) {
+            sum += vector[i] * vector[i];
         }
         return Math.sqrt(sum);
     }
@@ -127,12 +129,12 @@ public class Vector {
 
     //Получение компоненты вектора по нидексу:
     public double getByIndex(int index) {
-        return this.getVector()[index];
+        return this.vector[index];
     }
 
     //Установка компоненты вектора по нидексу:
     public void setByIndex(int index, double value) {
-        this.getVector()[index] = value;
+        this.vector[index] = value;
     }
 
     //Скалярное произведение векторов:
@@ -141,7 +143,7 @@ public class Vector {
         int n = Math.min(a.getSize(), b.getSize());
 
         for (int i = 0; i < n; i++) {
-            result += a.getVector()[i] * b.getVector()[i];
+            result += a.vector[i] * b.vector[i];
         }
 
         return result;
@@ -158,11 +160,11 @@ public class Vector {
         }
 
         Vector v = (Vector) o;
-        if (this.getVector().length != v.getVector().length) {
+        if (this.vector.length != v.vector.length) {
             return false;
         } else {
-            for (int i = 0; i < this.getVector().length; i++) {
-                if (this.getVector()[i] != v.getVector()[i]) {
+            for (int i = 0; i < this.vector.length; i++) {
+                if (this.vector[i] != v.vector[i]) {
                     return false;
                 }
             }
@@ -172,7 +174,7 @@ public class Vector {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(getVector());
+        return Arrays.hashCode(vector);
     }
 
 

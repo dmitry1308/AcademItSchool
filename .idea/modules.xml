@@ -3,12 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AcademItSchool.iml" filepath="$PROJECT_DIR$/AcademItSchool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CFT/CFT.iml" filepath="$PROJECT_DIR$/CFT/CFT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CFT10032017/CFT10032017.iml" filepath="$PROJECT_DIR$/CFT10032017/CFT10032017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CFT14032017/CFT14032017.iml" filepath="$PROJECT_DIR$/CFT14032017/CFT14032017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CFT15032017/CFT15032017.iml" filepath="$PROJECT_DIR$/CFT15032017/CFT15032017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSV/CSV.iml" filepath="$PROJECT_DIR$/CSV/CSV.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExercisesForYourself/ExercisesForYourself.iml" filepath="$PROJECT_DIR$/ExercisesForYourself/ExercisesForYourself.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Range/Range.iml" filepath="$PROJECT_DIR$/Range/Range.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RangeDifficult/RangeDifficult.iml" filepath="$PROJECT_DIR$/RangeDifficult/RangeDifficult.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Shapes/Shapes.iml" filepath="$PROJECT_DIR$/Shapes/Shapes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Shapes2/Shapes2.iml" filepath="$PROJECT_DIR$/Shapes2/Shapes2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Vector/Vector.iml" filepath="$PROJECT_DIR$/Vector/Vector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FinishedProjects/Range/Range.iml" filepath="$PROJECT_DIR$/FinishedProjects/Range/Range.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FinishedProjects/RangeDifficult/RangeDifficult.iml" filepath="$PROJECT_DIR$/FinishedProjects/RangeDifficult/RangeDifficult.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FinishedProjects/Shapes2/Shapes2.iml" filepath="$PROJECT_DIR$/FinishedProjects/Shapes2/Shapes2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vector20032017/Vector20032017.iml" filepath="$PROJECT_DIR$/Vector20032017/Vector20032017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vector22032017/Vector22032017.iml" filepath="$PROJECT_DIR$/Vector22032017/Vector22032017.iml" />
     </modules>
   </component>
 </project>
