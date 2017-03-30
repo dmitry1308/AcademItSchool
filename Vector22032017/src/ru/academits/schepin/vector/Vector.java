@@ -10,25 +10,18 @@ public class Vector {
         this.vector = vector;
     }
 
-    public double[] getVector() {
-        return vector;
-    }
-
-    public void setVector(double[] vector) {
-        this.vector = vector;
-    }
 
     //Создание конструктора, где размерность вектора равна n :
     public Vector(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Неправильная размерность вектора");
         }
-        vector = (new double[n]);
+        vector = new double[n];
     }
 
     // Создание  копии вектора:
     public Vector(Vector v) {
-        this(v.vector);
+        this.vector = v.vector;
     }
 
 
@@ -55,66 +48,85 @@ public class Vector {
 
     @Override
     public String toString() {
-        return Arrays.toString(vector);
+        StringBuilder s = new StringBuilder();
+        s.append(Arrays.toString(vector));
+        s.setCharAt(0, '{');
+        s.setCharAt(s.length() - 1, '}');
+        return String.valueOf(s);
     }
 
     //todo Операции с векторами:
 
-    //Метод для сложения векторов:
-    public void sum(Vector b) {
-        for (int i = 0; i < b.getSize(); i++) {
-            vector[i] += b.vector[i];
+    //Прибавление к вектору другого вектора:
+    public Vector addition(Vector b) {
+        if (this.getSize() >= b.getSize()) {
+            this.sum(b);
+            return this;
+        } else {
+            double[] array = new double[b.getSize()];
+            System.arraycopy(this.vector, 0, array, 0, this.getSize());
+            vector = array;
+            this.sum(b);
+            return this;
         }
     }
 
+    //Метод для сложения векторов:
+    private void sum(Vector b) {
+        for (int i = 0; i < b.getSize(); i++) {
+            this.vector[i] += b.vector[i];
+        }
+    }
 
     //Сложение векторов:
     public static Vector sum(Vector a, Vector b) {
-        int n = Math.max(a.getSize(), b.getSize());
-
-        double[] array = new double[n];
-        System.arraycopy(a.getVector(), 0, array, 0, a.getSize());
-        Vector result = new Vector(array);
-
-        result.sum(b);
-
-        return result;
+        Vector copyOfA = new Vector(a);
+        return copyOfA.addition(b);
     }
 
 
-    //Метод для вычитания векторов:
-    public void sub(Vector b) {
-        for (int i = 0; i < b.getSize(); i++) {
-            vector[i] -= b.vector[i];
+    //Вычитание из вектора другого вектора:
+    public Vector subtraction(Vector b) {
+        if (this.getSize() >= b.getSize()) {
+            this.sub(b);
+            return this;
+        } else {
+            double[] array = new double[b.getSize()];
+            System.arraycopy(this.vector, 0, array, 0, this.getSize());
+            vector = array;
+            this.sub(b);
+            return this;
         }
     }
 
-    // Вычитание векторов:
-    public static Vector sub(Vector a, Vector b) {
-        int n = Math.max(a.getSize(), b.getSize());
-        double[] array = new double[n];
-        System.arraycopy(a.getVector(), 0, array, 0, a.getSize());
-        Vector result = new Vector(array);
-        result.sub(b);
-        return result;
+    //Метод для вычитания векторов:
+    private void sub(Vector b) {
+        for (int i = 0; i < b.getSize(); i++) {
+            this.vector[i] -= b.vector[i];
+        }
     }
+
+    //Вычитание векторов:
+    public static Vector sub(Vector a, Vector b) {
+        Vector copyOfA = new Vector(a);
+        return copyOfA.subtraction(b);
+    }
+
+
 
     // Умножение на скаляр:
     public Vector scale(double k) {
-        Vector result = new Vector(this);
-        for (int i = 0; i < result.vector.length; i++) {
-            result.vector[i] *= k;
+
+        for (int i = 0; i < this.vector.length; i++) {
+            this.vector[i] *= k;
         }
-        return result;
+        return this;
     }
 
     //Разворот вектора:
     public Vector invert() {
-        Vector result = new Vector(this);
-        for (int i = 0; i < result.vector.length; i++) {
-            result.vector[i] *= -1;
-        }
-        return result;
+        this.scale(-1);
+        return this;
     }
 
     // Получение длины вектора:

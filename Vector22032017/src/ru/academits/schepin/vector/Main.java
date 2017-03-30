@@ -6,7 +6,7 @@ public class Main {
 
         //Сумма:
         double[] array1 = {1, 6, 3, 9, 7, 2};
-        double[] array2 = {1, 6, 3, 9, 7, 2, 5, 9};
+        double[] array2 = {5, 8, 9, 6, 8, 7, 1, 2};
 
 
         Vector a = new Vector(array1);
@@ -22,17 +22,28 @@ public class Main {
         System.out.println("Размер вектора a= " + a.getSize());
         System.out.println("Размер вектора b= " + b.getSize());
 
-
-        System.out.println("Прибавление вектора:");
+        System.out.println("Сложение векторов:");
         Vector c = Vector.sum(a, b);
         System.out.println("c = a + b");
         System.out.println("c = " + c);
+        System.out.println("a = " + a);
+        System.out.println("Прибавление вектора:");
 
+        System.out.println("a+  = a + b");
+        System.out.println("a+ = " + a.addition(b));
+        System.out.println("a = " + a);
 
         System.out.println("Вычитание вектора:");
-
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        System.out.println("Вычитание: ");
         Vector e = Vector.sub(a, b);
         System.out.println("a - b = " + e);
+        System.out.println("a = " + a);
+        System.out.println("Вычитание из а вектора b: ");
+        System.out.println("a - = " + a.subtraction(b));
+        System.out.println("a- = " + a);
+
 
 
         System.out.println("Умножение вектора на скаляр:");
