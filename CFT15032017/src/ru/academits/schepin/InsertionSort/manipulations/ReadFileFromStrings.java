@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class ReadFileFromStrings {
-    public static ArrayList readFile(String sourcePath) {
+    public static ArrayList <String> readFile(String sourcePath) {
         //todo Создание сканера:
 
         try (Scanner scanner = new Scanner(new FileInputStream(sourcePath))) {

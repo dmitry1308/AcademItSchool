@@ -1,6 +1,6 @@
 package ru.academits.schepin.InsertionSort;
 
-import ru.academits.schepin.InsertionSort.Exceptions.ErrorDueToTransferredFile;
+import ru.academits.schepin.InsertionSort.Exceptions.WrongTransferredFileException;
 import ru.academits.schepin.InsertionSort.comparators.IntegerComparator;
 import ru.academits.schepin.InsertionSort.comparators.StringComparator;
 import ru.academits.schepin.InsertionSort.manipulations.ReadFileFromNumbers;
@@ -62,7 +62,7 @@ public class Main {
             if (isNumbers) {
                 ArrayList <Integer> listFromNumbers = ReadFileFromNumbers.readFile(sourcePath);
                 if (listFromNumbers == null) {
-                    throw new ErrorDueToTransferredFile("Ошибка из-за переданного файла");
+                    throw new WrongTransferredFileException("Ошибка из-за переданного файла");
                 }
                 System.out.println("Прочтенный файл: " + listFromNumbers);
 
@@ -83,7 +83,7 @@ public class Main {
                 //todo Чтение файла из букв:
                 ArrayList<String> listFromStrings = ReadFileFromStrings.readFile(sourcePath);
                 if (listFromStrings == null) {
-                    throw new ErrorDueToTransferredFile("Ошибка из-за переданного файла");
+                    throw new WrongTransferredFileException("Ошибка из-за переданного файла");
                 }
                 System.out.println("Прочтенный файл: " + listFromStrings);
 

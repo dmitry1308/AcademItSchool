@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class ReadFileFromNumbers {
-    public static ArrayList readFile(String sourcePath) {
+    public static ArrayList <Integer> readFile(String sourcePath) {
 
         //todo Создание сканера:
 
