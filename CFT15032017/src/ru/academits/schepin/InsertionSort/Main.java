@@ -15,7 +15,7 @@ import static ru.academits.schepin.InsertionSort.manipulations.RecordInFile.reco
 
 public class Main {
     public static void main(String[] args) {
-        //todo Проверка кол-ва переданных аргументов:
+        //todo Проверка кол-ва переданных аргументо:
         if (args.length != 4) {
             System.out.println("Недостаточно переданных параметров");
             return;
