@@ -1,9 +1,16 @@
 package ru.academits.schepin.InsertionSort;
 
+import ru.academits.schepin.InsertionSort.Exceptions.ErrorDueToTransferredFile;
+import ru.academits.schepin.InsertionSort.comparators.IntegerComparator;
+import ru.academits.schepin.InsertionSort.comparators.StringComparator;
+import ru.academits.schepin.InsertionSort.manipulations.ReadFileFromNumbers;
+import ru.academits.schepin.InsertionSort.manipulations.ReadFileFromStrings;
+import ru.academits.schepin.InsertionSort.manipulations.Sort;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
-import static ru.academits.schepin.InsertionSort.RecordInFile.recordInFile;
+import static ru.academits.schepin.InsertionSort.manipulations.RecordInFile.recordInFile;
 
 
 public class Main {
@@ -50,10 +57,10 @@ public class Main {
         }
 
 
-        //todo Чтение файла из цифр:
         try {
+            //todo Чтение файла из цифр:
             if (isNumbers) {
-                ArrayList  listFromNumbers = ReadFileFromNumbers.readFile(sourcePath);
+                ArrayList <Integer> listFromNumbers = ReadFileFromNumbers.readFile(sourcePath);
                 if (listFromNumbers == null) {
                     throw new ErrorDueToTransferredFile("Ошибка из-за переданного файла");
                 }
@@ -61,10 +68,10 @@ public class Main {
 
                 //todo Сортировка файла из цифр:
                 if (isAscending) {
-                    SortAscending.sort(listFromNumbers, new IntegerComparator());
+                    Sort.sort(listFromNumbers, new IntegerComparator());
                     System.out.println("Отсортированный файл: " + listFromNumbers);
                 } else {
-                    SortDecreasing.sort(listFromNumbers, new IntegerComparator());
+                    Sort.sort(listFromNumbers, new IntegerComparator().reversed());
                     System.out.println("Отсортированный файл: " + listFromNumbers);
                 }
 
@@ -74,7 +81,7 @@ public class Main {
 
             } else {
                 //todo Чтение файла из букв:
-                ArrayList  listFromStrings = ReadFileFromStrings.readFile(sourcePath);
+                ArrayList<String> listFromStrings = ReadFileFromStrings.readFile(sourcePath);
                 if (listFromStrings == null) {
                     throw new ErrorDueToTransferredFile("Ошибка из-за переданного файла");
                 }
@@ -82,10 +89,10 @@ public class Main {
 
                 //todo Сортировка файла из букв:
                 if (isAscending) {
-                    SortAscending.sort(listFromStrings, new StringComparator());
+                    Sort.sort(listFromStrings, new StringComparator());
                     System.out.println("Отсортированный файл: " + listFromStrings);
                 } else {
-                    SortDecreasing.sort(listFromStrings, new StringComparator());
+                    Sort.sort(listFromStrings, new StringComparator().reversed());
                     System.out.println("Отсортированный файл: " + listFromStrings);
                 }
 
